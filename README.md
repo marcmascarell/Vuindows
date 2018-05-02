@@ -1,8 +1,10 @@
-#Vuindows
+Vuindows
+======
 
 Windows-like web OS made with Vue. Made for the game [Unexpected End](https://store.steampowered.com/app/740170/Unexpected_End/)
 
-###Setup
+Setup
+------
 
 `npm install`
 
@@ -15,7 +17,7 @@ Windows-like web OS made with Vue. Made for the game [Unexpected End](https://st
 Go to [http://localhost:8080]()
 
 Credits
---------
+------
 - [2048](https://github.com/gabrielecirulli/2048)
 - [Hextris](https://github.com/Hextris/hextris)
 - [Newbie God](https://github.com/nuria-fl/ld38)
@@ -26,5 +28,5 @@ Credits
 - Some code and initial idea: [Tanner Villarete](https://github.com/tvillarete/Win10-Replica)
 
 License
---------
+------
 MIT
