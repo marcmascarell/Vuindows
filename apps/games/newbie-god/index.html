@@ -1,0 +1,74 @@
+<!doctype html>
+<head>
+    <title>Ludum Dare 38: Newbie God</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Amatica+SC:700" rel="stylesheet">
+    <script src="js/lib/phaser.min.js"></script>
+  <script src="js/bundle.js"></script>
+
+    <style>
+      body {
+        font-family: 'Amatica SC';
+        font-weight: 700;
+        text-align: center;
+        font-size: 26px;
+        color: #58a4b0;
+
+      }
+      canvas {
+        margin: 0 auto;
+        width: 960px;
+        height: 600px;
+      }
+      button {
+        min-width: 200px;
+        margin-top: 20px;
+        padding: 5px 20px;
+        background: #58a4b0;
+        border: 3px solid #58a4b0;
+        border-radius: 5px;
+        color: #FFF;
+        cursor: pointer;
+        font-family: 'Amatica SC';
+        font-size: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+
+      }
+      button:hover {
+        background: #fff;
+        color: #58a4b0;
+      }
+      #startScreen {
+        width: 960px;
+        height: 600px;
+        margin: 0 auto;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c7efcf+0,eef5db+100 */
+        background: #c7efcf; /* Old browsers */
+        background: -moz-linear-gradient(top,  #c7efcf 0%, #eef5db 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #c7efcf 0%,#eef5db 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #c7efcf 0%,#eef5db 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c7efcf', endColorstr='#eef5db',GradientType=0 ); /* IE6-9 */
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    </style>
+</head>
+<body>
+    <div id="game">
+      <div id="startScreen">
+        <div>
+          <h1>Newbie God</h1>
+          <p>You've just graduated from Godly Academy and you're ready to rule your first world.<br>It's in your hands to rule by fear or be a benevolent god.</p>
+          <p>What's your choice?</p>
+          <button type="button" id="play">Start</button>
+        </div>
+      </div>
+    </div>
+    <p>ARROWS: MOVE &nbsp;&nbsp;–&nbsp;&nbsp; W: WRATH OF GOD &nbsp;&nbsp;–&nbsp;&nbsp; SPACEBAR: INTERACT</p>
+</body>

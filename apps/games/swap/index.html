@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="image/x-icon" href="http://nmoroze.github.io/swap/favicon.ico">
+
+	<title>Swap</title>
+	<script src="js/tile.js"></script>
+	<script src="js/ai.js"></script>
+	<script src="js/levels.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/world.js"></script>
+	<script src="js/draw.js"></script>
+	<script src="js/keypress-1.0.8.min.js"></script>
+	<script src="js/input.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			//http://stackoverflow.com/questions/7425502/how-to-return-integer-from-url-hash-using-javascript
+			var level = window.location.hash.match(/\d+/) || 1;
+			world.init(level-1, "canvas", "hud", "tip");
+			document.getElementById("reset").onclick = function() {
+				world.resetLevel();
+			}
+			document.getElementById("skip").onclick = function() {
+				world.victory();
+			}
+			document.getElementById("mute").onclick = function() {
+				var music = document.getElementById("music");
+				if(music.paused) {
+					music.play();
+					document.getElementById("mute").innerHTML = "<i class='fa fa-volume-up'></i>";
+				}
+				else {
+					music.pause();
+					document.getElementById("mute").innerHTML = "<i class='fa fa-volume-off'></i>&nbsp;&nbsp;";
+				}
+			}
+
+		}
+	</script>
+
+	<audio id="music" src="music.mp3" preload loop></audio>
+	<meta property="og:image" content="thumbnail.png" />
+
+ <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+	<style>
+		a.action-btn {
+			text-decoration: none;
+			color: gray;
+		}
+		a.action-btn:hover {
+			text-decoration: none;
+			color: gray;
+		}
+		body { 
+			font-family: "Open Sans", sans-serif; font-weight: 400; 
+/*			-webkit-transform: rotateZ(0deg);  Activates graphics acceleration and improves performance in some cases... 
+*/		}
+		#reset {
+			float: left;
+		}
+		#skip {
+			float: right;
+		}
+	</style>
+
+</head>
+<body>
+<a href="https://github.com/nmoroze/swap"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+<div style="width: 640px;text-align: center;margin: 0 auto">
+<span id="hud" style="font-size: 24px; margin-left: 110px;"></span>
+<span style="float: right;font-size: 36px;"><a href="#" id="mute" class="action-btn"><i class="fa fa-volume-up"></i></a></span>
+	<br>
+<canvas id="canvas" width="640" height="640" style="box-shadow:0 0 15px darkgrey;"></canvas>
+<span style="width: 640px;font-size:18px; display: inline-block;">
+	<a href="#" id="reset" class="action-btn"><em>Reset <i class="fa fa-repeat"></i></em></a>
+	<a href="#" id="skip" class="action-btn"><em>Skip <i class="fa fa-forward"></i></em></a>
+</span>
+<br>
+<span id="tip" style="font-size: 24px; text-align: center;"></span>
+<br>
+</div>	
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-528c256940c52555"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    },  
+    'whatsnext' : {},  
+    'recommended' : {} 
+  });
+</script>  
+<!-- AddThis Smart Layers END -->
+</body>
+</html>

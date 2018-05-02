@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bong</title>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js" integrity="sha256-TaLceMwjWRqe4yhbqPOJH6V7UGt5AvvdNfpaIXJWbFU=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app">
+        <header style="display: flex; justify-content: space-between">
+            <div style="display: flex">
+                <h1>Bong</h1>
+                <div class="Search">
+                    <input type="search" style="margin-left: 1em" v-model="search">
+                </div>
+            </div>
+        </header>
+
+        <div style="margin-top: 5em">
+            <h2 v-if="search">
+                "{{ search }}"
+            </h2>
+            <h3 style="margin-top: 1em">
+                {{ $t('For a change we have not found what you are looking for ...') }}
+            </h3>
+        </div>
+    </div>
+
+    <script>
+        Vue.prototype.$t = key => key;
+
+        new Vue({
+            el: '#app',
+            created() {
+                this.search = this.getQueryParameter('search');
+            },
+            data: {
+                search: null
+            },
+            computed: {
+
+            },
+            methods: {
+                getQueryParameter(key) {
+                    var params = this.getQueryParams();
+
+                    return params[key];
+                },
+                getQueryParams(qs) {
+                    qs = qs || document.location.search;
+                    qs = qs.split('+').join(' ');
+
+                    var params = {},
+                        tokens,
+                        re = /[?&]?([^=]+)=([^&]*)/g;
+
+                    while (tokens = re.exec(qs)) {
+                        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+                    }
+
+                    return params;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

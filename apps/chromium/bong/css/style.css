@@ -1,0 +1,35 @@
+/* === Basic reset === */
+* { margin: 0; padding: 0; outline: none; box-sizing:border-box; }
+a>img { border: none; }
+header, footer, article, section, nav, aside { display: block; }
+
+html, body {
+    margin: 0;
+    background: #f8f8f8;
+    font-family: Arial,sans-serif;
+    font-size: 1.2em;
+    padding: 1em 2em;
+}
+
+header {
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.Search {
+    flex: 1;
+    display: flex;
+    margin-left: 1em;
+    min-width: 100%;
+
+}
+
+.Search input {
+    flex: 1;
+    margin: 0 1em;
+    padding: 0.5em;
+    font-size: 1em;
+}
