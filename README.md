@@ -3,6 +3,8 @@ Vuindows
 
 Windows-like web OS made with Vue. Made for the game [Unexpected End](https://store.steampowered.com/app/740170/Unexpected_End/)
 
+[Demo](https://marcmascarell.github.io/Vuindows/)
+
 Setup
 ------
 
