@@ -10,7 +10,7 @@ Setup
 
 `npm run dev`
 
-###Hot reload
+**Hot reload**
 
 `npm run hot`
 
