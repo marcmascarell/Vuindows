@@ -9,22 +9,24 @@
     "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "generate-demo": "generateDemo.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cross-env": "^5.0.1",
-    "vue": "^2.5.0",
-    "lodash": "^4.17.4",
+    "cross-env": "^5.2.0",
     "fecha": "^2.3.1",
-    "vuex": "^3.0.1",
+    "fs-extra": "^7.0.1",
+    "laravel-mix": "^2.1.14",
+    "lodash": "^4.17.11",
+    "vue": "^2.5.22",
     "vue-clickaway": "^2.1.0",
-    "laravel-mix": "^2.1.11"
+    "vuex": "^3.1.0"
   },
   "dependencies": {
-    "js-video-url-parser": "^0.2.4",
+    "js-video-url-parser": "^0.2.8",
     "query-string": "^5.0.1"
   }
 }
