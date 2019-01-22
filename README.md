@@ -18,6 +18,16 @@ Setup
 
 Go to [http://localhost:8080]()
 
+Screenshots
+------
+![image](https://user-images.githubusercontent.com/642299/51568990-6aad0980-1e9b-11e9-9640-dbd487801b2d.png)
+
+![image](https://user-images.githubusercontent.com/642299/51569093-ad6ee180-1e9b-11e9-9eba-a04055c58bde.png)
+
+![image](https://user-images.githubusercontent.com/642299/51569256-25d5a280-1e9c-11e9-960e-816db0786248.png)
+
+![image](https://user-images.githubusercontent.com/642299/51569454-b14f3380-1e9c-11e9-9f20-06c6546ae0ca.png)
+
 Credits
 ------
 - [2048](https://github.com/gabrielecirulli/2048)
@@ -28,6 +38,7 @@ Credits
 - [Jahzzar song from Siesta](http://freemusicarchive.org/music/Jahzzar/Travellers_Guide/Siesta)
 - [a_sky_full_of_stars.mp4 from splashbase](http://www.splashbase.co/)
 - Some code and initial idea: [Tanner Villarete](https://github.com/tvillarete/Win10-Replica)
+
 
 License
 ------
