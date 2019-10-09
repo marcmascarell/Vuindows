@@ -30,6 +30,7 @@ Go to [http://localhost:8080]()
 
 Credits
 ------
+
 - [2048](https://github.com/gabrielecirulli/2048)
 - [Hextris](https://github.com/Hextris/hextris)
 - [Newbie God](https://github.com/nuria-fl/ld38)
@@ -38,6 +39,14 @@ Credits
 - [Jahzzar song from Siesta](http://freemusicarchive.org/music/Jahzzar/Travellers_Guide/Siesta)
 - [a_sky_full_of_stars.mp4 from splashbase](http://www.splashbase.co/)
 - Some code and initial idea: [Tanner Villarete](https://github.com/tvillarete/Win10-Replica)
+
+
+Disclaimer
+------
+
+Resources (videos, images, games, ...) were OpenSource (MIT) at the time of addition or used with the consent of the
+ implied persons. I do not own them and were not made me. Any breach of this was involuntary so please tell me and I
+  will remove the content involved.
 
 
 License
