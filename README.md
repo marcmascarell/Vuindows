@@ -45,7 +45,7 @@ Disclaimer
 ------
 
 Resources (videos, images, games, ...) were OpenSource (MIT) at the time of addition or used with the consent of the
- implied persons. I do not own them and were not made me. Any breach of this was involuntary so please tell me and I
+ implied persons. I do not own them and were not made by me. Any breach of this was involuntary so please tell me and I
   will remove the content involved.
 
 
