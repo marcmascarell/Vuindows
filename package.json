@@ -18,7 +18,7 @@
     "fecha": "^2.3.1",
     "fs-extra": "^7.0.1",
     "laravel-mix": "^2.1.14",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
     "vue-clickaway": "^2.1.0",
