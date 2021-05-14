@@ -4,10 +4,11 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production",
     "generate-demo": "generateDemo.js"
   },
   "keywords": [],
@@ -17,15 +18,18 @@
     "cross-env": "^5.2.1",
     "fecha": "^2.3.1",
     "fs-extra": "^7.0.1",
-    "laravel-mix": "^2.1.14",
+    "laravel-mix": "^6.0.19",
     "lodash": "^4.17.15",
     "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10",
     "vue-clickaway": "^2.1.0",
+    "vue-template-compiler": "^2.6.10",
     "vuex": "^3.1.1"
   },
   "dependencies": {
     "js-video-url-parser": "^0.2.8",
-    "query-string": "^5.0.1"
+    "query-string": "^5.0.1",
+    "sass": "^1.32.13",
+    "sass-loader": "^11.1.1",
+    "vue-loader": "^15.9.7"
   }
 }

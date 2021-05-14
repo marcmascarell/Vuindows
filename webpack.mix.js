@@ -11,9 +11,16 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.setPublicPath('./')
-    .babel(['js/vendor/*'], 'dist/vendor.js')
-    .js('js/bootstrap.js', 'dist/app.js');
+// mix.setPublicPath('./')
+//     .babel(['js/vendor/*'], 'dist/vendor.js')
+//     .js('js/bootstrap.js', 'dist/app.js')
+
+mix
+    .js('js/bootstrap.js', 'dist/app.js')
+    .vue({
+        extractStyles: false,
+        globalStyles: false
+    });
 
 // Full API
 // mix.js(src, output);
