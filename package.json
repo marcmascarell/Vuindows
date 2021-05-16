@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^10.2.5",    
     "cross-env": "^5.2.1",
     "fecha": "^2.3.1",
     "fs-extra": "^7.0.1",
@@ -27,6 +28,7 @@
   },
   "dependencies": {
     "js-video-url-parser": "^0.2.8",
+    "postcss": "^8.2.15",    
     "query-string": "^5.0.1",
     "sass": "^1.32.13",
     "sass-loader": "^11.1.1",
