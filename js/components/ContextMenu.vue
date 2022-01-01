@@ -1,5 +1,5 @@
 <template>
-    <ul class="ContextMenu custom-menu">
+    <ul class="ContextMenu custom-menu" v-show="show">
         <li id="1context" data-action="first">Change Background</li>
         <li data-action="second">Second thing</li>
         <li data-action="third">Third thing</li>
@@ -8,51 +8,37 @@
 
 <script>
     export default {
+        data () {
+            return {
+                show: false
+            }
+        },
         mounted() {
-            $(document).bind("contextmenu", function (event) {
-
+            const $customMenu = document.querySelector(".custom-menu");
+            document.addEventListener("contextmenu", (event) => {
                 // Avoid the real right click
                 event.preventDefault();
 
                 // Show contextmenu
-                /*$(".custom-menu").finish().toggle(100).css({
-                    top: event.pageY + "px",
-                    left: event.pageX + "px"
-                });*/
+                this.show = !this.show;
+                $customMenu.style.top = event.pageY + "px";
+                $customMenu.style.left = event.pageX + "px";
             });
 
 
-            // If the document is clicked somewhere
-            $(document).bind("mousedown", function (e) {
-
-                // If the clicked element is not the menu
-                if (!$(e.target).parents(".custom-menu").length > 0) {
-
-                    // Hide it
-                    $(".custom-menu").hide(100);
+            // If the document is clicked somewhere else
+            document.body.addEventListener("mousedown", function (e) {
+                if (!(e.target.contains($customMenu)) && !($customMenu.contains(e.target))) {
+                    this.show = false;
                 }
             });
-
 
             // If the menu element is clicked
-            $(".custom-menu li").click(function(){
-                switch($(this).attr("data-action")) {
-
-                    // Case for whatever section is clicked
-                    case "first":
-                        $("#3app").fadeIn("fast");
-                        break;
-                    // Haven't done anything here yet
-                    case
-                    "second":
-                        alert("second");
-                        break;
-                    case "third":
-                        alert("third");
-                        break;
-                }
-                // Hide the menu after section was triggered
-                $(".custom-menu").hide(100);
+            $customMenu.querySelectorAll(".custom-menu li").forEach(el => {
+                el.addEventListener("click", () => {
+                    console.log(el.dataset.action);
+                    this.show = false;
+                });
             });
         }
     }

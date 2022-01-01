@@ -277,7 +277,6 @@
     background:lightgray;
 }
 .custom-menu {
-    display: none;
     z-index: 1000;
     position: absolute;
     overflow: hidden;

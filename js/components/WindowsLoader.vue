@@ -36,15 +36,19 @@
     export default {
         mounted() {
             setTimeout(() => {
-                $(this.$el).fadeOut("slow", () => {
-//                    this.$destroy();
-                });
-            }, 4000);
+                this.$el.classList.add("fade-out");
+
+            }, 1000);
         }
     }
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
+    .fade-out {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 2s, opacity 2s linear;
+    }
     .WindowsLoader {
         z-index: 999;
         position: fixed;

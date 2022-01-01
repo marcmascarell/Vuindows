@@ -48,6 +48,7 @@
 
 <script>
     import { mapActions, mapGetters } from 'vuex';
+    import interact from 'interactjs'
 
     export default {
         data() {
@@ -87,39 +88,84 @@
         },
         mounted() {
             const $vm = this;
-            const $jqueryElement = $(this.$el);
+            const $desktop = this.$parent.$el.parentElement;
+            const $interact = this.options.draggable || this.options.resizable ? interact(this.$el) : null;
 
             if (this.options.draggable) {
-                $jqueryElement.draggable({
-                    handle: ".Program__header",
-                    cancel: ".Program__windowControls",
-                    containment: ".desktop",
-                    scroll: false,
-                    stop: function(event, ui) {
-                        $vm.updateOptions({
-                            position: {
-                                left: ui.position.left + 'px',
-                                top: ui.position.top + 'px',
-                            }
-                        });
-                    }
+                $interact
+                .draggable({
+                    allowFrom: ".Program__header",
+                    modifiers: [
+                        interact.modifiers.restrict({
+                            restriction: $desktop,
+                            elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
+                            endOnly: true
+                        })
+                    ],
+                    listeners: {
+                        end: function (event) {
+                            const target = event.target;
+
+                            $vm.updateOptions({
+                                position: {
+                                    left: (parseFloat(target.getAttribute('data-x')) || 0) + 'px',
+                                    top: (parseFloat(target.getAttribute('data-y')) || 0) + 'px',
+                                }
+                            });
+                        }
+                    },
+                    autoScroll: false,
+                    inertia: true
+                })
+                .on('dragmove', function (event) {
+                    const target = event.target
+                    // keep the dragged position in the data-x/data-y attributes
+                    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+                    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+                    // translate the element
+                    target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+                    // update the posiion attributes
+                    target.setAttribute('data-x', x)
+                    target.setAttribute('data-y', y)
                 });
             }
 
             if (this.options.resizable) {
-                $jqueryElement.resizable({
-                    containment: ".desktop",
-                    minHeight: 300,
-                    minWidth: 300,
-                    stop: function(event, ui) {
-                        $vm.updateOptions({
-                            size: {
-                                width: ui.size.width + 'px',
-                                height: ui.size.height + 'px',
+                const MIN_WIDTH = 200;
+                const MIN_HEIGHT = 300;
+
+                $interact.resizable({
+                    edges: { top: false, left: true, bottom: true, right: true },
+                    listeners: {
+                        end: function (event) {
+                            $vm.updateOptions({
+                                size: {
+                                    width: event.rect.width + 'px',
+                                    height: event.rect.height + 'px',
+                                }
+                            });
+                        },
+                        move: function (event) {
+                            let { x, y } = event.target.dataset
+
+                            x = (parseFloat(x) || 0) + event.deltaRect.left
+                            y = (parseFloat(y) || 0) + event.deltaRect.top
+
+                            if (event.rect.width <= MIN_WIDTH || event.rect.height <= MIN_HEIGHT) {
+                                return;
                             }
-                        });
+
+                            Object.assign(event.target.style, {
+                                width: `${event.rect.width}px`,
+                                height: `${event.rect.height}px`,
+                                transform: `translate(${x}px, ${y}px)`
+                            })
+
+                            Object.assign(event.target.dataset, { x, y })
+                        }
                     }
-//                aspectRatio: 16 / 9
                 });
             }
         },

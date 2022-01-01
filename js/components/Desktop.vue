@@ -50,6 +50,7 @@
     import FileExplorer from './Programs/FileExplorer.vue';
     import Terminal from './Programs/Terminal.vue';
     import Settings from './Programs/Settings.vue';
+    import interact from 'interactjs'
 
     export default {
         components: {
@@ -64,8 +65,52 @@
             Terminal,
         },
         mounted() {
-            // Does not have much utility
-            $(this.$refs.shortcuts).find('.Shortcut').draggable({ grid: [ 112, 106 ] });
+            // interactjs does not always detect mouse up when snap modifier is present :S
+            let ignoreEvents = true;
+            document.body.addEventListener("mouseup", () => {
+                ignoreEvents = true;
+            });
+
+            this.$refs.shortcuts.querySelectorAll('.Shortcut').forEach(el => {
+                interact(el)
+                .draggable({
+                    modifiers: [
+                        interact.modifiers.snap({
+                            targets: [
+                                interact.snappers.grid({ x: 112, y: 106 })
+                            ],
+                            range: Infinity,
+                            relativePoints: [ { x: 0, y: 0 } ]
+                        }),
+                        interact.modifiers.restrict({
+                            restriction: this.$refs.shortcuts,
+                            elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
+                            endOnly: true
+                        })
+                    ],
+                    listeners: {
+                        start: function (event) {
+                            ignoreEvents = false;
+                        },
+                        end: function (event) {
+                            ignoreEvents = true;
+                        }
+                    },
+                    inertia: true
+                })
+                .on('dragmove', function (event) {
+                    if (ignoreEvents) {
+                        return;
+                    }
+                    const x = (parseFloat(event.target.dataset.x) || 0) + event.dx;
+                    const y = (parseFloat(event.target.dataset.y) || 0) + event.dy;
+
+                    event.target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+                    event.target.dataset.x = x;
+                    event.target.dataset.y = y;
+                });
+            });
+            
         },
         computed: {
             ...mapGetters([
