@@ -249,7 +249,9 @@
             changeColor(color) {
                 this.selectedColor = color;
 
-                $(".colorScheme, .previewApp, .previewApp2").css("background-color", color);
+                document.querySelectorAll(".colorScheme, .previewApp, .previewApp2").forEach(el => {
+                    el.style.backgroundColor = color;
+                });
 
                 this.changePreferredColor(color);
             }

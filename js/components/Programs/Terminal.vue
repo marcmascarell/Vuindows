@@ -62,13 +62,13 @@
                 }
             });
 
-            this.getElement()
-                .attr('autocomplete', 'off')
-                .attr('autocorrect', 'off')
-                .attr('autocapitalize', 'off')
-                .attr('spellcheck', 'false')
-                .attr('placeholder', "Type 'help' to list commands")
-                .focus();
+            const $input = this.getElement();
+            $input.setAttribute('autocomplete', 'off');
+            $input.setAttribute('autocorrect', 'off');
+            $input.setAttribute('autocapitalize', 'off');
+            $input.setAttribute('spellcheck', 'false');
+            $input.setAttribute('placeholder', "Type 'help' to list commands");
+            $input.focus();
         },
         computed: {
             terminalId() {
@@ -77,10 +77,10 @@
         },
         methods: {
             getElement() {
-                return $(`#${this.terminalId}`).find('input.cmdline');
+                return document.getElementById(this.terminalId).querySelector('input.cmdline');
             },
             removePlaceholder() {
-                this.getElement().attr('placeholder', '');
+                this.getElement().setAttribute('placeholder', '');
             }
         }
     }

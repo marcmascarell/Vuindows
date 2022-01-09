@@ -4,7 +4,7 @@
 
         <desktop></desktop>
 
-        <!--<context-menu></context-menu>-->
+        <context-menu></context-menu>
 
         <start-menu v-if="showStartMenu" @close="showStartMenu = false"></start-menu>
         <cortana v-if="showCortana" @close="showCortana = false"></cortana>
@@ -40,10 +40,6 @@
             StartMenu
         },
         mounted() {
-            $(document).bind("contextmenu", function (event) {
-                // Avoid the real right click
-                event.preventDefault();
-            });
         },
         methods: {
             toggleStartMenu() {
