@@ -33,12 +33,16 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run production --if-present
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ./dist
     
   # Deployment job
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://marcmascarell.github.io/Vuindows/
     runs-on: ubuntu-latest
     needs: build
     steps:
